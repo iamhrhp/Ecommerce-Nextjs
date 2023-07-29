@@ -1,12 +1,16 @@
 'use client';
 import { Box } from '@mui/material';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { SliderData } from '../Data/SliderData/SliderData';
-import shoe from '../Images/shoe.jpg';
+import shoeImage from '../images/shoe.jpg';
+import Image from 'next/image';
+import { Fragment, useState } from 'react';
 
 const SliderPage = () => {
+  // const [data, setData] = useState<any>(SliderData);
   return (
-    <Box>
+    <div>
       <Carousel
         autoPlay={true}
         showArrows={true}
@@ -19,14 +23,13 @@ const SliderPage = () => {
       >
         {SliderData.map((slider: any) => {
           return (
-            <Box key={slider.id}>
-              <img src={slider.img} alt="img" />
-            </Box>
+            <Fragment key={slider.id}>
+              <Image className="object-cover" src={slider.img} alt="img" />
+            </Fragment>
           );
         })}
       </Carousel>
-      <img src={shoe} alt="img" />
-    </Box>
+    </div>
   );
 };
 
